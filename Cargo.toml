@@ -1,5 +1,5 @@
 [package]
-name = "df"
+name = "dfr"
 authors = ["Shane Poppleton <shane@bjja.com.au>"]
 description = "A minimalist `df clone written in Rust - displays mounted filesystems & disk usage"
 repository = "https://github.com/codemonkey76/df-rust"
