@@ -3,7 +3,7 @@
 version = 4
 
 [[package]]
-name = "df"
+name = "dfr"
 version = "1.0.0"
 dependencies = [
  "libc",
