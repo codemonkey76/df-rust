@@ -45,6 +45,7 @@ fn main() -> std::io::Result<()> {
         "rpc_pipefs",
         "efivarfs",
         "fuse.portal",
+        "squashfs",
     ];
 
     let mut seen_source = HashSet::new();
@@ -81,7 +82,7 @@ fn main() -> std::io::Result<()> {
                 let used = total - free;
                 let pct_used = (used as f64 / total as f64) * 100.0;
                 println!(
-                    "{:18} {:>6} {:>6} {:>6} {:>6.1}% {} {:<}",
+                    "{:35} {:>6} {:>6} {:>6} {:>6.1}% {} {:<}",
                     mount.source,
                     to_gib(total),
                     to_gib(used),
@@ -144,7 +145,7 @@ fn header() {
     const RESET: &str = "\x1b[0m";
 
     println!(
-        "{}{}{:18} {:>6} {:>6} {:>6} {:>6} {:<20}{} {:<}{}",
+        "{}{}{:35} {:>6} {:>6} {:>6} {:>6} {:<20}{} {:<}{}",
         BOLD,
         FG_CYAN,
         "Filesystem",
