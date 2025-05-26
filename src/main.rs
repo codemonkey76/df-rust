@@ -44,7 +44,7 @@ fn main() -> std::io::Result<()> {
         "binfmt_misc",
         "rpc_pipefs",
         "efivarfs",
-        "fuse.portal",
+        "fuse",
         "squashfs",
     ];
 
@@ -63,7 +63,7 @@ fn main() -> std::io::Result<()> {
             let fs_type = parts[2].to_string();
             let options = parts[3].to_string();
 
-            if ignored_fs_types.contains(&fs_type.as_str()) {
+            if ignored_fs_types.contains(&fs_type.as_str()) || fs_type.starts_with("fuse.") {
                 continue;
             }
 
@@ -82,8 +82,9 @@ fn main() -> std::io::Result<()> {
                 let used = total - free;
                 let pct_used = (used as f64 / total as f64) * 100.0;
                 println!(
-                    "{:35} {:>6} {:>6} {:>6} {:>6.1}% {} {:<}",
+                    "{:35} {:12} {:>6} {:>6} {:>6} {:>6.1}% {} {:<}",
                     mount.source,
+                    mount.fs_type,
                     to_gib(total),
                     to_gib(used),
                     to_gib(free),
@@ -145,10 +146,11 @@ fn header() {
     const RESET: &str = "\x1b[0m";
 
     println!(
-        "{}{}{:35} {:>6} {:>6} {:>6} {:>6} {:<20}{} {:<}{}",
+        "{}{}{:35} {:12} {:>6} {:>6} {:>6} {:>6} {:<20}{} {:<}{}",
         BOLD,
         FG_CYAN,
         "Filesystem",
+        "Type",
         "Size",
         "Used",
         "Avail",

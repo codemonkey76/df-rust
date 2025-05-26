@@ -1,4 +1,4 @@
-# df-rs
+# df-rust
 
 A minimalist `df` clone written in Rust — displays mounted filesystems, disk
 usage, and colored usage bars in a clean column layout.
@@ -23,9 +23,9 @@ usage, and colored usage bars in a clean column layout.
 ## Output Example
 
 ```bash
-Filesystem           Size   Used  Avail   Use% Graph                Mounted on
-/dev/nvme0n1p2     930.5G  85.5G 845.0G    9.2% ■■                   /
-/dev/nvme0n1p1       1.0G   0.2G   0.8G   22.1% ■■■■                 /boot
+Filesystem         Type     Size   Used  Avail   Use% Graph             Mounted on
+/dev/nvme0n1p2     btrfs  930.5G  85.6G 845.0G    9.2% ■■                /
+/dev/nvme0n1p1     vfat     1.0G   0.2G   0.8G   22.1% ■■■■              /boot
 ```
 
 ## Building
@@ -33,8 +33,8 @@ Filesystem           Size   Used  Avail   Use% Graph                Mounted on
 Make sure you have Rust installed. Then:
 
 ```bash
-git clone https://github.com/youruser/df-rs.git
-cd df-rs
+git clone https://github.com/codemonkey76/df-rust.git
+cd df-rust
 cargo build --release
 ```
 
@@ -44,7 +44,7 @@ Run:
 
 ```bash
 
-./target/release/df-rs
+./target/release/df-rust
 ```
 
 Or install to your path:
