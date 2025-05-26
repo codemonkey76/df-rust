@@ -1,5 +1,6 @@
 [package]
 name = "df"
+description = "A minimalist `df clone written in Rust - displays mounted filesystems & disk usage"
 version = "1.0.0"
 edition = "2024"
 license = "MIT"
